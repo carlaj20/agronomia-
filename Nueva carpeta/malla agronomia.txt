@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Malla Ingeniería Agrónoma - UTalca</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Malla Ingeniería Agrónoma - UTalca</h1>
+
+  <h2>1er Semestre</h2>
+  <div class="semestre">
+    <button id="Algebra" onclick="seleccionar('Algebra')">Álgebra</button>
+    <button id="QuimicaInorganica" onclick="seleccionar('QuimicaInorganica')">Química Inorgánica</button>
+    <button id="BiologiaCelularVegetal" onclick="seleccionar('BiologiaCelularVegetal')">Biología Celular Vegetal</button>
+    <button id="ComunicacionI" onclick="seleccionar('ComunicacionI')">Comunicación Oral y Escrita I</button>
+    <button id="AgriculturaGeografia" onclick="seleccionar('AgriculturaGeografia')">Agricultura y Geografía de Chile</button>
+    <button id="IdiomaI" onclick="seleccionar('IdiomaI')">Idioma Extranjero I</button>
+    <button id="DeportesI" onclick="seleccionar('DeportesI')">Deportes I</button>
+  </div>
+
+  <h2>2do Semestre</h2>
+  <div class="semestre">
+    <button id="CalculoI" disabled onclick="seleccionar('CalculoI')">Cálculo I</button>
+    <button id="QuimicaOrganica" disabled onclick="seleccionar('QuimicaOrganica')">Química Orgánica</button>
+    <button id="AnatomiaVegetal" disabled onclick="seleccionar('AnatomiaVegetal')">Anatomía, Morfología y Desarrollo Vegetal</button>
+    <button id="ComunicacionII" disabled onclick="seleccionar('ComunicacionII')">Comunicación Oral y Escrita II</button>
+    <button id="ModuloIntegracionI" disabled onclick="seleccionar('ModuloIntegracionI')">Módulo de Integración I</button>
+    <button id="IdiomaII" disabled onclick="seleccionar('IdiomaII')">Idioma Extranjero II</button>
+    <button id="DeportesII" disabled onclick="seleccionar('DeportesII')">Deportes II</button>
+  </div>
+
+  <h2>3er Semestre</h2>
+  <div class="semestre">
+    <button id="Fisica" disabled onclick="seleccionar('Fisica')">Física</button>
+    <button id="Estadistica" disabled onclick="seleccionar('Estadistica')">Estadística</button>
+    <button id="CalculoII" disabled onclick="seleccionar('CalculoII')">Cálculo II</button>
+    <button id="BioquimicaVegetal" disabled onclick="seleccionar('BioquimicaVegetal')">Bioquímica Vegetal</button>
+    <button id="SistematicaVegetal" disabled onclick="seleccionar('SistematicaVegetal')">Sistemática Vegetal</button>
+    <button id="ProduccionAnimalI" disabled onclick="seleccionar('ProduccionAnimalI')">Sistemas de Producción Animal I</button>
+    <button id="Autogestion" disabled onclick="seleccionar('Autogestion')">Autogestión del Aprendizaje</button>
+    <button id="IdiomaIII" disabled onclick="seleccionar('IdiomaIII')">Idioma Extranjero III</button>
+  </div>
+
+  <h2>4to Semestre</h2>
+  <div class="semestre">
+    <button id="AgriculturaCuantitativa" disabled onclick="seleccionar('AgriculturaCuantitativa')">Fundamentos de Agricultura Cuantitativa</button>
+    <button id="Edafologia" disabled onclick="seleccionar('Edafologia')">Edafología</button>
+    <button id="FisiologiaVegetal" disabled onclick="seleccionar('FisiologiaVegetal')">Fisiología Vegetal</button>
+    <button id="MicrobiologiaAgricola" disabled onclick="seleccionar('MicrobiologiaAgricola')">Microbiología Agrícola</button>
+    <button id="ProduccionAnimalII" disabled onclick="seleccionar('ProduccionAnimalII')">Sistemas de Producción Animal II</button>
+    <button id="ModuloIntegracionII" disabled onclick="seleccionar('ModuloIntegracionII')">Módulo de Integración II</button>
+    <button id="TrabajoEquipo" disabled onclick="seleccionar('TrabajoEquipo')">Trabajo en Equipo</button>
+    <button id="IdiomaIV" disabled onclick="seleccionar('IdiomaIV')">Idioma Extranjero IV</button>
+    <button id="DeportesIII" disabled onclick="seleccionar('DeportesIII')">Deportes III</button>
+    <button id="MecanizacionAgricola" disabled onclick="seleccionar('MecanizacionAgricola')">Mecanización Agrícola</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+const prerrequisitos = {
+  CalculoI: ["Algebra"],
+  QuimicaOrganica: ["QuimicaInorganica"],
+  AnatomiaVegetal: ["BiologiaCelularVegetal"],
+  ComunicacionII: ["ComunicacionI"],
+  ModuloIntegracionI: ["AgriculturaGeografia", "AnatomiaVegetal"],
+  IdiomaII: ["IdiomaI"],
+  DeportesII: ["DeportesI"],
+
+  Fisica: ["CalculoI"],
+  Estadistica: ["CalculoI"],
+  CalculoII: ["CalculoI"],
+  BioquimicaVegetal: ["QuimicaOrganica", "BiologiaCelularVegetal"],
+  SistematicaVegetal: ["AnatomiaVegetal"],
+  ProduccionAnimalI: ["AgriculturaGeografia", "QuimicaOrganica", "BiologiaCelularVegetal"],
+  Autogestion: ["ComunicacionII"],
+  IdiomaIII: ["IdiomaII"],
+
+  AgriculturaCuantitativa: ["Estadistica", "CalculoII"],
+  Edafologia: ["QuimicaOrganica", "Fisica"],
+  FisiologiaVegetal: ["AnatomiaVegetal", "BioquimicaVegetal"],
+  MicrobiologiaAgricola: ["BioquimicaVegetal"],
+  ProduccionAnimalII: ["ProduccionAnimalI"],
+  ModuloIntegracionII: ["ModuloIntegracionI", "AgriculturaCuantitativa", "Edafologia", "FisiologiaVegetal", "MicrobiologiaAgricola"],
+  TrabajoEquipo: ["Autogestion"],
+  IdiomaIV: ["IdiomaIII"],
+  DeportesIII: ["DeportesII"],
+  MecanizacionAgricola: ["Edafologia", "FisiologiaVegetal"]
+};
+
+let completados = [];
+
+function seleccionar(codigo) {
+  if (!completados.includes(codigo)) {
+    completados.push(codigo);
+    document.getElementById(codigo).classList.add('completado');
+
+    for (let ramo in prerrequisitos) {
+      if (!document.getElementById(ramo).disabled) continue;
+      if (ramo === "ModuloIntegracionII") {
+        // Caso especial: requiere ModuloIntegracionI y al menos dos de 4to
+        let modI = completados.includes("ModuloIntegracionI");
+        let count = ["AgriculturaCuantitativa", "Edafologia", "FisiologiaVegetal", "MicrobiologiaAgricola"].filter(r => completados.includes(r)).length;
+        if (modI && count >= 2) {
+          document.getElementById(ramo).disabled = false;
+        }
+      } else {
+        if (prerrequisitos[ramo].every(req => completados.includes(req))) {
+          document.getElementById(ramo).disabled = false;
+        }
+      }
+    }
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1, h2 {
+  color: #2c3e50;
+}
+
+.semestre {
+  margin-bottom: 20px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+}
+
+button.completado {
+  background-color: #2ecc71;
+  color: white;
+}
+
+button:disabled {
+  background-color: #bdc3c7;
+  color: #fff;
+}
